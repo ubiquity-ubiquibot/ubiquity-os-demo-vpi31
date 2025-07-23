@@ -1,0 +1,45 @@
+plugins:
+  - uses:
+      - plugin: "https://os-command-start-stop.ubq.fi"
+        skipBotEvents: false
+  - uses:
+      - plugin: "https://os-command-demo.ubq.fi"
+  - uses:
+      - plugin: "https://os-command-wallet.ubq.fi"
+  - uses:
+      - plugin: "ubiquity-os-marketplace/command-ask@v1.2.0"
+        with:
+          model: "deepseek/deepseek-r1-0528:free"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
+  - uses:
+      - plugin: "https://os-command-query.ubq.fi"
+  - uses:
+      - plugin: "ubiquity-os-marketplace/text-conversation-rewards@v1.7.6"
+        skipBotEvents: false
+        with:
+          incentives:
+            collaboratorOnlyPaymentInvocation: false
+            contentEvaluator:
+              openAi:
+                endpoint: "https://openrouter.ai/api/v1"
+                model: "deepseek/deepseek-chat-v3-0324:free"
+            userExtractor: {}
+            dataPurge: {}
+            formattingEvaluator: {}
+            payment: {}
+            githubComment: {}
+            reviewIncentivizer: {}
+            simplificationIncentivizer: {}
+            externalContent:
+              llmImageModel:
+                model: "meta-llama/llama-4-maverick:free"
+              llmWebsiteModel:
+                model: "deepseek/deepseek-chat-v3-0324:free"
+          evmPrivateEncrypted: "KHt4DD7g8DfxWPgmr_uJJnGOolI3KWq8bfSgozpztEcexTr3G5A7vSo_kjFRojTA0WdM1oHi8ZiQCRRk83KJUE873Kq2gITpLdpjv_Old9tIEmePGJnSe42c7UHA7hTs8vq4HKoE9uHvJVLWS56UNYeypO5tSqbO9hqTAV11uJOAKI57sg"
+          evmNetworkId: 100
+  - uses:
+      - plugin: "ubiquity-os-marketplace/daemon-disqualifier@v1.0.1"
+  - uses:
+      - plugin: "ubiquity-os-marketplace/text-vector-embeddings@v1.1.0"
+        with:
+          demoFlag: true
